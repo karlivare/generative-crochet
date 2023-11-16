@@ -91,7 +91,7 @@ canvas {
 .banner{
     padding-top: 48px;
     padding-bottom: 48px;
-    background-image: url('/img/pattern-bg-opacity10.png');
+    background-image: url('img/pattern-bg-opacity10.png');
 }
 
 /*pattern generator styles*/
