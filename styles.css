@@ -170,3 +170,8 @@ h1#pattern-generator-header{
     }
   }
 
+/*instructions container*/
+#instructions-container{
+    border-top: 2px solid rgba(31, 19, 42, 0.15);
+    padding-top: 1rem;
+}
