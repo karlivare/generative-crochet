@@ -1,17 +1,28 @@
 let singlecrochet;
+// let halfdoublecrochet;
+// let doublecrochet;
+// let treblecrochet;
+// let doubletreblecrochet;
+
 let numCircles = 5; // Number of circles to be drawn
 let imageWidth = 50; // Width of the image
-let innermostCircleImages = 5; // Number of images in the innermost circle. Default
+let initialStitches = 6; // Initial number of stitches in the first round
+let innermostCircleImages = initialStitches; // Number of images in the innermost circle
 
 function updateCircles() {
   numCircles = max(2, min(int(this.value()), 10)); // Update the number of circles (limited to a range of 2 to 10)
 }
 function updateInnermostCircleImages() {
-  innermostCircleImages = max(5, min(int(this.value()), 10)); // Update the number of images in the innermost circle (limited to a range of 6 to 10)
+  initialStitches = max(6, min(int(this.value()), 10)); // Update the initial number of stitches (limited to a range of 6 to 10)
+  innermostCircleImages = initialStitches; // Update the number of images in the innermost circle
 }
 
 function preload() {
   singlecrochet = loadImage('stitches/basic-stitches/single-crochet.png');
+  // halfdouble = loadImage('stitches/basic-stitches/half-double-crochet.png');
+  // doublecrochet = loadImage('stitches/basic-stitches/double-crochet.png');
+  // treblecrochet = loadImage('stitches/basic-stitches/treble-crochet.png');
+  // doubletreble = loadImage('stitches/basic-stitches/double-treble.png');
 }
 
 function setup() {
@@ -24,18 +35,17 @@ function setup() {
   // Create an input field for the number of circles
   let input = createInput();
   input.position(10, height + 10);
-  input.value(numCircles); 
-  input.input(updateCircles); //call the function to update the circles when the user changes this and set this as the input
+  input.value(numCircles);
+  input.input(updateCircles);
 
-
-  // Create a label for the number of images in the innermost circle input
-  let innermostImagesLabel = createDiv('Images in Innermost Circle:');
-  innermostImagesLabel.position(10, height + 40);
-   // Create an input field for the number of images in the innermost circle
-   let innermostInput = createInput();
-   innermostInput.position(10, height + 40);
-   innermostInput.value(innermostCircleImages);
-   innermostInput.input(updateInnermostCircleImages); // Call the function to update the number of images in the innermost circle
+  // Create a label for the initial number of stitches input
+  let stitchesLabel = createDiv('Initial Stitches:');
+  stitchesLabel.position(10, height + 40);
+  // Create an input field for the initial number of stitches
+  let stitchesInput = createInput();
+  stitchesInput.position(10, height + 40);
+  stitchesInput.value(initialStitches);
+  stitchesInput.input(updateInnermostCircleImages);
 }
 
 
@@ -43,14 +53,11 @@ function draw() {
   background(220);
   translate(width / 2, height / 2);
 
-  let maxRadius = min(width, height) * 0.4; // Max radius for the outer circle
-  let minRadius = max(40, (innermostCircleImages * imageWidth) / (2 * PI));
+  let radius = 50; // Set a fixed radius
   
   for(let i = 0; i < numCircles; i++){
-    //for each circle, calculate its radius and how many times the image will repeat (this depends on circumference and 360 degrees)
-    let radius = map(i, 0, numCircles - 1, maxRadius, minRadius);
     let circumference = 2 * PI * radius;
-    let numRepetitions = int(circumference / imageWidth);
+    let numRepetitions = initialStitches + i * initialStitches; // Calculate the number of stitches based on the pattern
     let angleStep = 360 / numRepetitions;
 
     for(let j = 0; j < numRepetitions; j++){
@@ -67,12 +74,10 @@ function draw() {
       pop(); // Restore the previous transformation state
     }
 
-    // Adjust the angle step for the next circle based on the number of images in the innermost circle
-    if (i === 0) {
-      numRepetitions = innermostCircleImages;
-    } else {
-      numRepetitions = int(circumference / imageWidth);
-    }
-    angleStep = 360 / numRepetitions;
+    
+    innermostCircleImages += initialStitches; //find the variable of the new round (increased)
+    numRepetitions = innermostCircleImages; //set the variable to how many stitches for the current round
+    angleStep = 360 / numRepetitions; //calculate angle to rotate image at
+    radius += imageWidth * 1.25; // Increase the radius for the next circle
   }
 }

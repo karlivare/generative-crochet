@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*color-styles*/
+:root {
+    --imperial-red: #F04B50;
+    --delft-blue: #29335C;
+    --lavender-blush: #FEECEC;
+    --midnight-plum: #1F132A;
+    --cherry-blossom-pink: #f8b3b6;
+    --light-coral: #F59091;
+    --powder-blue: #abb4d7;
+    --vista-blue: #8091c6;
+    --ghost-white: #F1F2F9;
+  }
+
+  /* text styles */
+.heading-1{
+    font-family: "poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 2.4375rem;
+    padding-top: 8px; /*To push to baseline*/
+}
+
+.heading-2{
+    font-family: "poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.9375rem;
+}
+
+.heading-3{
+    font-family: "poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.5625rem;
+}
+
+.heading-4{
+    font-family: "poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.25rem; 
+}
+
+.heading-5{
+    font-family: "poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+.heading-6{
+    font-family: "poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 0.8125rem;
+}
+
+.paragraph{
+    font-family: "poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+.small-text{
+    font-family: poppins, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.8125rem;
+}
+
+/*canvas styling*/
+#canvas-container{
+    max-width: 100%;
+    overflow: hidden;
+}
+canvas {
+    max-width: 700px;
+    width: 100%;
+    height: auto;
+    border-radius: 50rem;
+}
+
+/*banner styles*/
+.banner{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    background-image: url('/img/pattern-bg-opacity10.png');
+}
+
+/*pattern generator styles*/
+h1#pattern-generator-header{
+    color: var(--delft-blue);
+    margin: 0;
+}
+
+#pattern-generator-main-section{
+    /* background-image: url('/img/pattern-bg-opacity10.png'); */
+    background-color: rgb(254, 236, 236, 0.35);
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+
+}
+#pattern-settings{
+    padding-top: 4rem;
+    gap: 1rem;
+}
+
+/*button styles*/
+.button-main{
+    font-family: poppins, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.25rem;
+    padding: 16px 32px 12px 32px;
+    background-color: var(--delft-blue);
+    color: white;
+    border-radius: 8px;
+    align-self: start;
+    border: none;
+    transition: ease-in-out 150ms; 
+}
+.button-main:hover{
+    box-shadow:0px 4px 4px rgba(41,51,92,0.25);
+    transform: translateY(-4px);
+}
+
+.button-clicked{
+    box-shadow: none !important;
+    transform: initial !important;
+}
+
+.disable-hover {
+    pointer-events: none; /* Disable pointer events. Will stop the hovering animation when the button is clicked */
+}
+
+.button-product-card{
+    font-family: poppins, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 0.8125rem;
+}
+
+.button-tag-dropdown{
+    font-family: poppins, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+/*Adding media queries to make responsive*/
+@media (max-width: 992px) {
+    canvas {
+      width: 500px !important;
+      height: 500px !important;
+    }
+  }
+  
+  /* For Bootstrap small breakpoint */
+  @media (max-width: 768px) {
+    canvas {
+      width: 300px !important;
+      height: 300px !important;
+    }
+  }
+
